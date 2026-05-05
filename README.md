@@ -1,4 +1,4 @@
-# Hi, I'm samiali38183
+# Hi, I'm sami
 
 I build clean, focused web apps with vanilla HTML, CSS, and JavaScript.
 
