@@ -24,12 +24,4 @@ A Pomodoro timer and focus session tracker with session logging and a weekly pro
 
 ---
 
-## GitHub Stats
-
-![samiali38183's GitHub stats](https://github-readme-stats.vercel.app/api?username=samiali38183&show_icons=true&theme=dark&hide_border=true)
-
----
-
-<p align="center">
-  <a href="https://github.com/samiali38183">github.com/samiali38183</a>a>
-</p>p>
+*Building one project at a time.*
