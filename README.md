@@ -1,35 +1,42 @@
 # Sami Ali
 
-**Security engineering student building detection and vulnerability-management tooling.** Looking for Security Engineer / Detection & Response internships, Summer 2027.
+Cybersecurity student at George Mason University (graduating May 2028), looking for Summer 2027
+security engineering and detection internships. Previously interned on the DHS/CBP Vulnerability
+Assessment Team, working with Nessus/Tenable data, CISA KEV and BOD 26-04.
 
-Cybersecurity student in Northern Virginia (graduating May 2028) · CompTIA Security+ · AWS Certified Cloud Practitioner · former DHS/CBP Vulnerability Assessment Team intern (Nessus/Tenable, CISA KEV, BOD 26-04) · Public Trust.
+CompTIA Security+ · AWS Certified Cloud Practitioner
 
 Portfolio: [samiali38183.github.io](https://samiali38183.github.io) · LinkedIn: [sami-ali-1a4b89345](https://www.linkedin.com/in/sami-ali-1a4b89345)
 
-<!-- TODO(flagship): add the detection-engineering project here as the first entry once the repo is public. Keep the same shape: what it does / tech / one verified metric. -->
-
 ## Projects
 
-**[sinkline](https://github.com/samiali38183/sinkline)** — interprocedural taint analysis for Python web apps, mapped to the OWASP Top 10.
-Abstract interpreter over `ast` with two-pass function summaries, CWE-scoped sanitizers and validation-guard recognition; emits SARIF for GitHub code scanning. Zero dependencies, 138 sink signatures / 42 rules. On a 109-line labeled corpus: precision 0.983 / recall 0.951 (bandit on the same corpus: F1 0.579); 0 findings on microblog, SQLi flows found across files in vulpy. Python · static analysis · SARIF · GitHub Actions CI on 3 OSes.
+**[tripline](https://github.com/samiali38183/tripline)**: tests whether detections actually fire. It replays
+recorded attack telemetry (Atomic Red Team on Linux, Stratus Red Team / flaws.cloud CloudTrail) through
+Sigma rules in CI and fails the PR if an expected rule stops firing. Coverage is weighted by how common
+each ATT&CK technique is. The first Linux run found a gap in a SigmaHQ setuid rule, which I fixed with a
+custom rule. Python · Sigma · MITRE ATT&CK · GitHub Actions
 
-**[kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization)** — risk-based vulnerability prioritization with CISA KEV, EPSS, CVSS and asset criticality, aligned with BOD 26-04.
-Case study of the methodology from my CBP internship plus a stdlib-only reference implementation that ranks findings, compares KEV vs non-KEV populations and matches against the live KEV feed. Synthetic data only; no internship figures. Python · vulnerability management · CISA KEV / EPSS / CVSS.
+**[sinkline](https://github.com/samiali38183/sinkline)**: a static analyzer that follows user input
+through Python web apps and flags it when it reaches SQL, shell commands and other dangerous calls
+unsanitized. Maps to OWASP Top 10 / CWE and outputs SARIF. On a 109-line labeled benchmark: precision
+0.983, recall 0.951 (Bandit F1 on the same set: 0.579). Python · static analysis · SARIF
 
-**[call-kettle](https://github.com/samiali38183/call-kettle)** — sanitized snapshot of a production AI voice receptionist (FastAPI, Twilio, Claude tool-use).
-Security-relevant parts: Twilio request-signature validation on every webhook, server-side enforcement of booking rules the model cannot bypass, strict Pydantic config (`extra: forbid`), tenant isolation tests, cost guards. 1,100+ pytest test functions gate every change in CI. Python 3.12 · FastAPI · SQLite · Twilio.
+**[kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization)**: the vulnerability
+prioritization approach from my CBP internship, rebuilt on synthetic data. Ranks findings by KEV status,
+EPSS, CVSS and asset criticality, and can pull the live KEV catalog. Python · vulnerability management
 
-**[cybersecurity-vault](https://github.com/samiali38183/cybersecurity-vault)** — defensive labs and small tools.
-Phishing IOC Extractor (stdlib `.eml` parser → deduplicated JSON of IPs, domains, URLs, emails, hashes; 10 pytest tests) and a Wireshark lab covering TCP/DNS/HTTP/TLS-SNI/ARP with ATT&CK mapping (T1557.002). Python · packet analysis · threat intel.
+**[call-kettle](https://github.com/samiali38183/call-kettle)**: an AI phone receptionist (FastAPI,
+Twilio, Claude tool use). The security side: Twilio signature checks on every webhook, booking rules
+enforced in code so the model can't bypass them, strict config validation, and tenant isolation tests.
+
+**[cybersecurity-vault](https://github.com/samiali38183/cybersecurity-vault)**: labs and small tools,
+including a phishing IOC extractor (parses .eml files into IPs, domains, URLs, emails and hashes; 10
+pytest tests) and a Wireshark lab covering TCP, DNS, HTTP, TLS SNI and ARP.
 
 ## Skills
 
-- **Vulnerability management** — Nessus/Tenable, CISA KEV, EPSS, CVSS v3.1, BOD 26-04, remediation benchmarking, NIST CSF / FedRAMP context
-- **Detection & analysis** — Wireshark, IOC extraction, MITRE ATT&CK mapping, log/packet triage
-- **AppSec & static analysis** — taint analysis, OWASP Top 10 / CWE, SARIF, secure-by-default input validation
-- **Python** — stdlib-first CLIs, `ast`, pytest, argparse, type hints, GitHub Actions
-- **Cloud / AWS** — IAM, EC2, S3, VPC, CloudTrail fundamentals (Cloud Practitioner certified)
-
-## Certifications
-
-CompTIA Security+ · AWS Certified Cloud Practitioner
+- Vulnerability management: Nessus/Tenable, CISA KEV, EPSS, CVSS, BOD 26-04, NIST CSF, FedRAMP
+- Detection: Sigma, MITRE ATT&CK, Wireshark, IOC extraction
+- AppSec: taint analysis, OWASP Top 10 / CWE, SARIF
+- Python: CLIs, pytest, GitHub Actions
+- AWS: IAM, EC2, S3, VPC, CloudTrail basics
