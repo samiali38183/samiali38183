@@ -19,7 +19,7 @@ I build tools that check security work instead of just doing it: detections that
 | [kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization) | KEV-first vulnerability prioritization using CISA KEV, EPSS and CVSS; built on synthetic data | Python (stdlib), CISA KEV, EPSS, CVSS |
 | [cybersecurity-vault](https://github.com/samiali38183/cybersecurity-vault) | Phishing IOC extractor (10 pytest tests) and a Wireshark lab covering TCP, DNS, HTTP, TLS SNI and ARP | Python, Wireshark |
 | [call-kettle](https://github.com/samiali38183/call-kettle) | AI phone receptionist for home-service shops. Claude proposes tool calls; code validates and runs them. Tenant isolation and Twilio signature checks are tested | FastAPI, Twilio, Claude tool use, Fly.io |
-| [agent-engineering-lab](https://github.com/samiali38183/agent-engineering-lab) | How I run Hermes Agent, Claude Code and Codex in parallel on a deployed phone-agent product (deployed on Fly.io, no customers yet) and verify their work (5,300+ tests collected in the private codebase; a load test caught a real concurrency race) | Multi-agent workflow, Fly.io, SQLite |
+| [agent-engineering-lab](https://github.com/samiali38183/agent-engineering-lab) | How I run Hermes Agent, Claude Code and Codex in parallel on a phone-agent product deployed on Fly.io (no customers yet) and verify their work (5,300+ tests collected in the private codebase; a load test caught a real concurrency race) | Multi-agent workflow, Fly.io, SQLite |
 | [focuslog](https://github.com/samiali38183/focuslog) | Pomodoro timer with session logging and a weekly dashboard | HTML, CSS, JavaScript |
 
 ## Contact
