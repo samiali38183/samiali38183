@@ -1,42 +1,29 @@
 # Sami Ali
 
-Cybersecurity student at George Mason University (graduating May 2028), looking for Summer 2027
-security engineering and detection internships. Previously interned on the DHS/CBP Vulnerability
-Assessment Team, working with Nessus/Tenable data, CISA KEV and BOD 26-04.
+Cybersecurity student at George Mason University (B.S. Information Technology, cybersecurity minor, May 2028). CompTIA Security+ and AWS Certified Cloud Practitioner. DHS HS-POWER intern on CBP's Vulnerability Assessment Team, summer 2026. Currently studying for OSCP and AWS Certified Security - Specialty. Based in Northern Virginia. Seeking Summer 2027 defensive security engineering internships.
 
-CompTIA Security+ · AWS Certified Cloud Practitioner
+I build tools that check security work instead of just doing it: detections that get tested, a static analyzer that gets benchmarked against Bandit, a vulnerability queue ordered by known exploitation.
 
-Portfolio: [samiali38183.github.io](https://samiali38183.github.io) · LinkedIn: [sami-ali-1a4b89345](https://www.linkedin.com/in/sami-ali-1a4b89345)
+## Proof
+
+- **[tripline](https://github.com/samiali38183/tripline), detection testing in CI.** On the first Linux run, the stock SigmaHQ setuid/setgid rule matched **0 of 36** events from an Atomic Red Team test, because it looks for the literal text `chmod u+s`. I wrote a replacement rule that matches any setuid/setgid chmod form.
+- **[sinkline](https://github.com/samiali38183/sinkline), taint analysis for Python web apps.** F1 **0.967** vs Bandit's **0.579** on a 109-line corpus (61 vulnerable, 48 safe variants). I labeled the corpus myself and Bandit was scored leniently; the repo documents both caveats and the known misses.
+- **[kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization), CISA KEV + EPSS + CVSS ranking.** In the 20-finding sample, a CVSS 8.8 finding with no known exploitation ranks below every KEV match. Runs on synthetic data, KEV-first and consistent with CISA BOD 26-04 (EPSS and asset criticality are my own additions); 9 tests pass.
 
 ## Projects
 
-**[tripline](https://github.com/samiali38183/tripline)**: tests whether detections actually fire. It replays
-recorded attack telemetry (Atomic Red Team on Linux, Stratus Red Team / flaws.cloud CloudTrail) through
-Sigma rules in CI and fails the PR if an expected rule stops firing. Coverage is weighted by how common
-each ATT&CK technique is. The first Linux run found a gap in a SigmaHQ setuid rule, which I fixed with a
-custom rule. Python · Sigma · MITRE ATT&CK · GitHub Actions
+| Repo | What it is | Stack |
+|---|---|---|
+| [tripline](https://github.com/samiali38183/tripline) | Detection quality gate: emulate ATT&CK techniques, replay the telemetry through Sigma rules, score coverage, fail PRs on regressions | Python, Sigma, MITRE ATT&CK, GitHub Actions |
+| [sinkline](https://github.com/samiali38183/sinkline) | Interprocedural taint analysis for Python web apps, mapped to OWASP Top 10 / CWE, SARIF output, zero dependencies | Python `ast`, SARIF |
+| [kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization) | KEV-first vulnerability prioritization using CISA KEV, EPSS and CVSS; built on synthetic data | Python (stdlib), CISA KEV, EPSS, CVSS |
+| [cybersecurity-vault](https://github.com/samiali38183/cybersecurity-vault) | Phishing IOC extractor (10 pytest tests) and a Wireshark lab covering TCP, DNS, HTTP, TLS SNI and ARP | Python, Wireshark |
+| [call-kettle](https://github.com/samiali38183/call-kettle) | AI phone receptionist for home-service shops. Claude proposes tool calls; code validates and runs them. Tenant isolation and Twilio signature checks are tested | FastAPI, Twilio, Claude tool use, Fly.io |
+| [agent-engineering-lab](https://github.com/samiali38183/agent-engineering-lab) | How I run Hermes Agent, Claude Code and Codex in parallel on a phone-agent product deployed on Fly.io (no customers yet) and verify their work (5,300+ tests collected in the private codebase; a load test caught a real concurrency race) | Multi-agent workflow, Fly.io, SQLite |
+| [focuslog](https://github.com/samiali38183/focuslog) | Pomodoro timer with session logging and a weekly dashboard | HTML, CSS, JavaScript |
 
-**[sinkline](https://github.com/samiali38183/sinkline)**: a static analyzer that follows user input
-through Python web apps and flags it when it reaches SQL, shell commands and other dangerous calls
-unsanitized. Maps to OWASP Top 10 / CWE and outputs SARIF. On a 109-line labeled benchmark: precision
-0.983, recall 0.951 (Bandit F1 on the same set: 0.579). Python · static analysis · SARIF
+## Contact
 
-**[kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization)**: the vulnerability
-prioritization approach from my CBP internship, rebuilt on synthetic data. Ranks findings by KEV status,
-EPSS, CVSS and asset criticality, and can pull the live KEV catalog. Python · vulnerability management
-
-**[call-kettle](https://github.com/samiali38183/call-kettle)**: an AI phone receptionist (FastAPI,
-Twilio, Claude tool use). The security side: Twilio signature checks on every webhook, booking rules
-enforced in code so the model can't bypass them, strict config validation, and tenant isolation tests.
-
-**[cybersecurity-vault](https://github.com/samiali38183/cybersecurity-vault)**: labs and small tools,
-including a phishing IOC extractor (parses .eml files into IPs, domains, URLs, emails and hashes; 10
-pytest tests) and a Wireshark lab covering TCP, DNS, HTTP, TLS SNI and ARP.
-
-## Skills
-
-- Vulnerability management: Nessus/Tenable, CISA KEV, EPSS, CVSS, BOD 26-04, NIST CSF, FedRAMP
-- Detection: Sigma, MITRE ATT&CK, Wireshark, IOC extraction
-- AppSec: taint analysis, OWASP Top 10 / CWE, SARIF
-- Python: CLIs, pytest, GitHub Actions
-- AWS: IAM, EC2, S3, VPC, CloudTrail basics
+- Email: [samiali38183@gmail.com](mailto:samiali38183@gmail.com)
+- LinkedIn: [sami-ali-1a4b89345](https://www.linkedin.com/in/sami-ali-1a4b89345)
+- Portfolio: [samiali38183.github.io](https://samiali38183.github.io)
