@@ -1,28 +1,21 @@
 # Sami Ali
 
-Cybersecurity student at George Mason University (B.S. Information Technology, cybersecurity minor, May 2028). CompTIA Security+ and AWS Certified Cloud Practitioner. DHS HS-POWER intern on CBP's Vulnerability Assessment Team, summer 2026. Currently studying for OSCP and AWS Certified Security - Specialty. Based in Northern Virginia. Seeking Summer 2027 defensive security engineering internships.
+Cybersecurity student at George Mason University (B.S. Information Technology, cybersecurity minor, May 2028). CompTIA Security+ and AWS Certified Cloud Practitioner. Interned on the DHS/CBP Vulnerability Assessment Team in summer 2026. Studying for OSCP and the AWS Security Specialty. Northern Virginia. Looking for Summer 2027 security engineering internships.
 
-I build tools that check security work instead of just doing it: detections that get tested, a static analyzer that gets benchmarked against Bandit, a vulnerability queue ordered by known exploitation.
-
-## Proof
-
-- **[tripline](https://github.com/samiali38183/tripline), detection testing in CI.** On the first Linux run, the stock SigmaHQ setuid/setgid rule matched **0 of 36** events from an Atomic Red Team test, because it looks for the literal text `chmod u+s`. I wrote a replacement rule that matches any setuid/setgid chmod form.
-- **[sinkline](https://github.com/samiali38183/sinkline), taint analysis for Python web apps.** F1 **0.967** vs Bandit's **0.579** on a 109-line corpus (61 vulnerable, 48 safe variants). I labeled the corpus myself and Bandit was scored leniently; the repo documents both caveats and the known misses.
-- **[kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization), CISA KEV + EPSS + CVSS ranking.** In the 20-finding sample, a CVSS 8.8 finding with no known exploitation ranks below every KEV match. Runs on synthetic data, KEV-first and consistent with CISA BOD 26-04 (EPSS and asset criticality are my own additions); 9 tests pass.
+[Portfolio](https://samiali38183.github.io) · [Resume (PDF)](https://samiali38183.github.io/resume.pdf) · [LinkedIn](https://www.linkedin.com/in/sami-ali-1a4b89345) · [samiali38183@gmail.com](mailto:samiali38183@gmail.com)
 
 ## Projects
 
-| Repo | What it is | Stack |
-|---|---|---|
-| [tripline](https://github.com/samiali38183/tripline) | Detection quality gate: emulate ATT&CK techniques, replay the telemetry through Sigma rules, score coverage, fail PRs on regressions | Python, Sigma, MITRE ATT&CK, GitHub Actions |
-| [sinkline](https://github.com/samiali38183/sinkline) | Interprocedural taint analysis for Python web apps, mapped to OWASP Top 10 / CWE, SARIF output, zero dependencies | Python `ast`, SARIF |
-| [kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization) | KEV-first vulnerability prioritization using CISA KEV, EPSS and CVSS; built on synthetic data | Python (stdlib), CISA KEV, EPSS, CVSS |
-| [call-kettle](https://github.com/samiali38183/call-kettle) | AI phone receptionist for home-service shops. Claude proposes tool calls; code validates and runs them. Tenant isolation and Twilio signature checks are tested | FastAPI, Twilio, Claude tool use, Fly.io |
-| [agent-engineering-lab](https://github.com/samiali38183/agent-engineering-lab) | How I run Hermes Agent, Claude Code and Codex in parallel on a phone-agent product deployed on Fly.io (no customers yet) and verify their work (5,300+ tests collected in the private codebase; a load test caught a real concurrency race) | Multi-agent workflow, Fly.io, SQLite |
-| [focuslog](https://github.com/samiali38183/focuslog) | Pomodoro timer with session logging and a weekly dashboard | HTML, CSS, JavaScript |
+**[tripline](https://github.com/samiali38183/tripline)**: a CI gate for detections. It runs ATT&CK techniques (Atomic Red Team on Linux and Windows runners, replayed Stratus Red Team and flaws.cloud logs for AWS), replays the telemetry through Sigma rules and fails the pull request when an expected rule stops firing. On its first Linux run the stock SigmaHQ setuid/setgid rule matched 0 of 36 recorded events; a custom rule closes the gap. 10 scenarios pass on recorded telemetry, 4 are pending, and prevalence-weighted coverage is 68%. [Live report](https://samiali38183.github.io/tripline/).
 
-## Contact
+**[sinkline](https://github.com/samiali38183/sinkline)**: a static analyzer for Python web apps that follows request data across functions and files to SQL, shell, SSRF and deserialization sinks, and maps findings to OWASP Top 10 and CWE. SARIF output, GitHub Action, no dependencies. On its own 109-line self-labeled benchmark: precision 1.000, recall 0.984, F1 0.992, against Bandit's F1 of 0.579. [Sample report](https://samiali38183.github.io/sinkline/).
 
-- Email: [samiali38183@gmail.com](mailto:samiali38183@gmail.com)
-- LinkedIn: [sami-ali-1a4b89345](https://www.linkedin.com/in/sami-ali-1a4b89345)
-- Portfolio: [samiali38183.github.io](https://samiali38183.github.io)
+**[kevgate](https://github.com/samiali38183/kevgate)**: a vulnerability-intake API that ranks findings by CISA KEV, EPSS, CVSS and asset criticality, shipped the way a service would be: hardened container, Helm chart with network policy and restricted pod security, Terraform checked against LocalStack, and a GitHub Actions pipeline with SAST, dependency, secret, IaC and image scans, a kind-cluster deploy test and a ZAP baseline. The release image is signed with cosign.
+
+**[kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization)**: the prioritization idea from my internship as a small standard-library Python tool on synthetic data. KEV matches come first, then EPSS, CVSS and asset criticality, in the spirit of CISA BOD 26-04.
+
+## Also public
+
+- [call-kettle](https://github.com/samiali38183/call-kettle): a phone-receptionist backend (FastAPI, Twilio) where booking rules are enforced in code, not by the model.
+- [agent-engineering-lab](https://github.com/samiali38183/agent-engineering-lab): notes on working with AI coding agents and checking their output.
+- [focuslog](https://github.com/samiali38183/focuslog): a small Pomodoro timer.
