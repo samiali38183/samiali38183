@@ -1,21 +1,20 @@
 # Sami Ali
 
-Cybersecurity student at George Mason University (B.S. Information Technology, cybersecurity minor, May 2028). CompTIA Security+ and AWS Certified Cloud Practitioner. Interned on the DHS/CBP Vulnerability Assessment Team in summer 2026. Studying for OSCP and the AWS Security Specialty. Northern Virginia. Looking for Summer 2027 security engineering internships.
+Cybersecurity student at George Mason University (B.S. Information Technology, cybersecurity minor, May 2028). CompTIA Security+ and AWS Certified Cloud Practitioner. Interned on the DHS/CBP Vulnerability Assessment Team in summer 2026. Studying for OSCP and the AWS Security Specialty. Northern Virginia, looking for Summer 2027 security engineering internships.
 
-[Portfolio](https://samiali38183.github.io) · [Resume (PDF)](https://samiali38183.github.io/resume.pdf) · [LinkedIn](https://www.linkedin.com/in/sami-ali-1a4b89345) · [samiali38183@gmail.com](mailto:samiali38183@gmail.com)
+I build small defensive tools and try to measure whether they work, including where they do not. Current focus: detection engineering, application security and vulnerability management.
 
 ## Projects
 
-**[tripline](https://github.com/samiali38183/tripline)**: a CI gate for detections. It runs ATT&CK techniques (Atomic Red Team on Linux and Windows runners, replayed Stratus Red Team and flaws.cloud logs for AWS), replays the telemetry through Sigma rules and fails the pull request when an expected rule stops firing. On its first Linux run the stock SigmaHQ setuid/setgid rule matched 0 of 36 recorded events; a custom rule closes the gap. 10 scenarios pass on recorded telemetry, 4 are pending, and prevalence-weighted coverage is 68%. [Live report](https://samiali38183.github.io/tripline/).
+- **[tripline](https://github.com/samiali38183/tripline)**: a CI gate for Sigma detection rules. It replays recorded ATT&CK telemetry (Linux, Windows, AWS) through the rules on each pull request and fails the build when an expected rule stops firing. 13 of 14 scenarios pass; the stock SigmaHQ setuid rule matched 0 of the 2 attack events in its first recording. [Live report](https://samiali38183.github.io/tripline/).
+- **[sinkline](https://github.com/samiali38183/sinkline)**: a static analyzer for Python web apps that follows request data across functions and files to dangerous sinks, with SARIF output and a GitHub Action. On OWASP BenchmarkPython (10 taint categories, not the official scorer) it scores TPR 0.73 and FPR 0.21, against 0.13 and 0.06 for Bandit. The false-positive rate is high and documented. [Sample report](https://samiali38183.github.io/sinkline/).
+- **[fuzzdiff](https://github.com/samiali38183/fuzzdiff)**: picohttpparser ported to safe Rust and checked against the C original with differential fuzzing. 0 divergences in 27.6 million generated inputs, and all 5 deliberately planted bugs were detected.
+- **[kevgate-admit](https://github.com/samiali38183/kevgate-admit)**: a Kubernetes admission webhook in Go that denies workloads whose image digests carry CISA KEV vulnerabilities or an over-threshold risk score. Allow, deny and warn outcomes and a webhook outage (`failurePolicy` Fail and Ignore) are tested on a kind cluster in CI.
+- **[kevgate](https://github.com/samiali38183/kevgate)**: a vulnerability intake API that ranks findings by CISA KEV, EPSS, CVSS and asset criticality. Packaged with a hardened container, Helm chart and Terraform; CI runs SAST, dependency, secret and image scans, a kind deploy test and a ZAP baseline, and the release image is signed with cosign.
+- **[vulnlab](https://github.com/samiali38183/vulnlab)**: three small intentionally vulnerable services (SSRF, SQL injection, IDOR), each with a proof, a fix, a Sigma rule and a record of what sinkline does and does not report. 137 tests.
 
-**[sinkline](https://github.com/samiali38183/sinkline)**: a static analyzer for Python web apps that follows request data across functions and files to SQL, shell, SSRF and deserialization sinks, and maps findings to OWASP Top 10 and CWE. SARIF output, GitHub Action, no dependencies. On its own 109-line self-labeled benchmark: precision 1.000, recall 0.984, F1 0.992, against Bandit's F1 of 0.579. [Sample report](https://samiali38183.github.io/sinkline/).
+Also public: [kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization) (a small KEV-first scoring tool on synthetic data) and [call-kettle](https://github.com/samiali38183/call-kettle) (a phone-receptionist backend where booking rules are enforced in code).
 
-**[kevgate](https://github.com/samiali38183/kevgate)**: a vulnerability-intake API that ranks findings by CISA KEV, EPSS, CVSS and asset criticality, shipped the way a service would be: hardened container, Helm chart with network policy and restricted pod security, Terraform checked against LocalStack, and a GitHub Actions pipeline with SAST, dependency, secret, IaC and image scans, a kind-cluster deploy test and a ZAP baseline. The release image is signed with cosign.
+## Contact
 
-**[kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization)**: the prioritization idea from my internship as a small standard-library Python tool on synthetic data. KEV matches come first, then EPSS, CVSS and asset criticality, in the spirit of CISA BOD 26-04.
-
-## Also public
-
-- [call-kettle](https://github.com/samiali38183/call-kettle): a phone-receptionist backend (FastAPI, Twilio) where booking rules are enforced in code, not by the model.
-- [agent-engineering-lab](https://github.com/samiali38183/agent-engineering-lab): notes on working with AI coding agents and checking their output.
-- [focuslog](https://github.com/samiali38183/focuslog): a small Pomodoro timer.
+[Portfolio](https://samiali38183.github.io) · [Resume (PDF)](https://samiali38183.github.io/resume.pdf) · [LinkedIn](https://www.linkedin.com/in/sami-ali-1a4b89345) · [samiali38183@gmail.com](mailto:samiali38183@gmail.com)
