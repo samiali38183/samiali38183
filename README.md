@@ -1,19 +1,24 @@
 # Sami Ali
 
-I'm a cybersecurity student at George Mason University (B.S. Information Technology, cybersecurity minor, expected May 2028). I hold CompTIA Security+ and AWS Certified Cloud Practitioner, and I'm studying for OSCP and the AWS Security Specialty. In summer 2026 I interned on the DHS/CBP Vulnerability Assessment Team. I live in Northern Virginia and I'm looking for a Summer 2027 security engineering internship.
+Cybersecurity student at George Mason University (B.S. Information Technology, cybersecurity minor, expected May 2028), based in Northern Virginia. I'm looking for a **Summer 2027 security engineering internship**.
 
-I build small defensive tools and check whether they work, including where they don't. Most of it is detection engineering, application security and vulnerability management.
+CompTIA Security+ and AWS Certified Cloud Practitioner. Summer 2026: intern on the DHS/CBP Vulnerability Assessment Team. Studying for OSCP and the AWS Security Specialty.
 
-## Projects
+I build small defensive tools and test whether they work, including where they don't.
 
-- [tripline](https://github.com/samiali38183/tripline) is a CI gate for Sigma detection rules. On each pull request it replays recorded ATT&CK telemetry (Linux, Windows, AWS) through the rules and fails the build if a rule that should fire stops firing. 13 of 14 scenarios pass and the suite has 212 tests. In its first recording, the stock SigmaHQ setuid rule matched 0 of the 2 attack events. [Live report](https://samiali38183.github.io/tripline/).
-- [sinkline](https://github.com/samiali38183/sinkline) is a static analyzer for Python web apps. It follows request data across functions and files to dangerous sinks and writes text, JSON, SARIF or HTML, with a GitHub Action. On the 10 taint categories of OWASP BenchmarkPython (scored with my own script, not the official scorer) it gets a true-positive rate of 0.73 and a false-positive rate of 0.21. Bandit gets 0.13 and 0.06. I tuned it by reading that run's failures, so 0.73 is optimistic, and the false-positive rate is high. [Sample report](https://samiali38183.github.io/sinkline/).
-- [fuzzdiff](https://github.com/samiali38183/fuzzdiff) is picohttpparser ported to safe Rust and checked against the C original with differential fuzzing. It found 0 divergences in 27.6 million generated inputs. To see whether the harness would notice a real bug, I planted 5 in the port, and it caught all 5.
-- [kevgate-admit](https://github.com/samiali38183/kevgate-admit) is a Kubernetes admission webhook in Go. It denies workloads whose image digests carry CISA KEV vulnerabilities or score over a risk threshold. CI runs it on a kind cluster and checks the allow, deny and warn outcomes, then takes the webhook down to see what `failurePolicy` Fail and Ignore do.
-- [kevgate](https://github.com/samiali38183/kevgate) is a vulnerability intake API that ranks findings by CISA KEV, EPSS, CVSS and asset criticality. It comes with a container image, a Helm chart and Terraform, and has 277 tests. CI runs SAST, dependency, secret and image scans, a kind deploy test and a ZAP baseline, and the release image is signed with cosign.
-- [vulnlab](https://github.com/samiali38183/vulnlab) holds three small vulnerable services (SSRF, SQL injection, IDOR). Each has a proof, a fix, a Sigma rule and a note on what sinkline does and does not report. 137 tests.
+## Featured projects
 
-Also public: [kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization), a small KEV-first scoring tool on synthetic data, and [call-kettle](https://github.com/samiali38183/call-kettle), a phone-receptionist backend where booking rules are enforced in code.
+- **[tripline](https://github.com/samiali38183/tripline)**: a test gate for security detection rules. On every pull request it replays recorded attack activity through each rule and fails the build if a rule stops catching it. In its first recording, a stock community rule caught 0 of 2 real attack events. [Live report](https://samiali38183.github.io/tripline/).
+- **[sinkline](https://github.com/samiali38183/sinkline)**: a scanner for Python web apps that follows user input to dangerous calls to find injection-style bugs. I measured it against Bandit on a public benchmark and wrote up where it does badly, including a high false-positive rate. [Sample report](https://samiali38183.github.io/sinkline/).
+- **[fuzzdiff](https://github.com/samiali38183/fuzzdiff)**: a memory-safe Rust rewrite of a C HTTP parser, checked against the original with tens of millions of random inputs. It found 0 differences, and it caught all 5 bugs I planted to test the checker.
+
+## More
+
+- [kevgate-admit](https://github.com/samiali38183/kevgate-admit): a Kubernetes webhook that blocks container images with known-exploited vulnerabilities, tested on a real cluster in CI.
+- [kevgate](https://github.com/samiali38183/kevgate): an API that ranks vulnerability findings by known exploitation, EPSS, severity and asset criticality.
+- [vulnlab](https://github.com/samiali38183/vulnlab): three small vulnerable services, each with an exploit proof, a fix and a detection rule.
+- [kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization): a small scoring study on real KEV and EPSS data, with its limits stated.
+- [call-kettle](https://github.com/samiali38183/call-kettle): an AI phone receptionist where booking rules are enforced in code, with a security evaluation of the AI's tool access.
 
 ## Contact
 
