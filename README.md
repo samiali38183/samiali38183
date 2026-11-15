@@ -1,25 +1,22 @@
 # Sami Ali
 
-Cybersecurity student at George Mason University (B.S. Information Technology, cybersecurity minor, expected May 2028), based in Northern Virginia. I'm looking for a **Summer 2027 security engineering internship**.
+Security engineering student building detection, application-security and vulnerability-management tools, and testing whether they work.
 
-CompTIA Security+ and AWS Certified Cloud Practitioner. Summer 2026: intern on the DHS/CBP Vulnerability Assessment Team. Studying for OSCP and the AWS Security Specialty.
-
-I build small defensive tools and test whether they work, including where they don't.
+- **Education:** George Mason University, B.S. Information Technology with a cybersecurity minor (expected May 2028); A.S. Information Technology, Northern Virginia Community College (May 2026).
+- **Experience:** Summer 2026 intern on the DHS/CBP Vulnerability Assessment Team (HS-POWER program).
+- **Looking for:** a Summer 2027 security engineering internship (detection engineering, application security, vulnerability management).
 
 ## Featured projects
 
-- **[tripline](https://github.com/samiali38183/tripline)**: a test gate for security detection rules. On every pull request it replays recorded attack activity through each rule and fails the build if a rule stops catching it. In its first recording, a stock community rule caught 0 of 2 real attack events. [Live report](https://samiali38183.github.io/tripline/).
-- **[sinkline](https://github.com/samiali38183/sinkline)**: a scanner for Python web apps that follows user input to dangerous calls to find injection-style bugs. I measured it against Bandit on a public benchmark and wrote up where it does badly, including a high false-positive rate. [Sample report](https://samiali38183.github.io/sinkline/).
-- **[fuzzdiff](https://github.com/samiali38183/fuzzdiff)**: a memory-safe Rust rewrite of a C HTTP parser, checked against the original with tens of millions of random inputs. It found 0 differences, and it caught all 5 bugs I planted to test the checker.
+<!-- PLACEHOLDER: final list to be set from the SHORTLIST PROJECT_TIERS.md. Until then these are the default four. -->
 
-## More
+- **[tripline](https://github.com/samiali38183/tripline)**: a CI test gate for Sigma detection rules. It replays recorded attack telemetry through each rule on every pull request and fails the build if a rule stops firing. [Live report](https://samiali38183.github.io/tripline/).
+- **[sinkline](https://github.com/samiali38183/sinkline)**: a static taint analyzer for Python web apps, measured against Bandit and Semgrep on a public benchmark, with its false positives documented. [Sample report](https://samiali38183.github.io/sinkline/).
+- **[call-kettle](https://github.com/samiali38183/call-kettle)**: an AI phone receptionist backend where booking rules are enforced in code, with a security evaluation of the model's tool access.
+- **[fuzzdiff](https://github.com/samiali38183/fuzzdiff)**: a safe-Rust port of a C HTTP parser, checked against the original with differential fuzzing and planted-bug mutants.
 
-- [kevgate-admit](https://github.com/samiali38183/kevgate-admit): a Kubernetes webhook that blocks container images with known-exploited vulnerabilities, tested on a real cluster in CI.
-- [kevgate](https://github.com/samiali38183/kevgate): an API that ranks vulnerability findings by known exploitation, EPSS, severity and asset criticality.
-- [vulnlab](https://github.com/samiali38183/vulnlab): three small vulnerable services, each with an exploit proof, a fix and a detection rule.
-- [kev-risk-prioritization](https://github.com/samiali38183/kev-risk-prioritization): a small scoring study on real KEV and EPSS data, with its limits stated.
-- [call-kettle](https://github.com/samiali38183/call-kettle): an AI phone receptionist where booking rules are enforced in code, with a security evaluation of the AI's tool access.
+All repositories: [github.com/samiali38183?tab=repositories](https://github.com/samiali38183?tab=repositories)
 
-## Contact
+## Links
 
 [Portfolio](https://samiali38183.github.io) · [Resume (PDF)](https://samiali38183.github.io/resume.pdf) · [LinkedIn](https://www.linkedin.com/in/sami-ali-1a4b89345) · [samiali38183@gmail.com](mailto:samiali38183@gmail.com)
