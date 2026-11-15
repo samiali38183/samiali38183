@@ -8,12 +8,10 @@ Security engineering student building detection, application-security and vulner
 
 ## Featured projects
 
-<!-- PLACEHOLDER: final list to be set from the SHORTLIST PROJECT_TIERS.md. Until then these are the default four. -->
-
-- **[tripline](https://github.com/samiali38183/tripline)**: a CI test gate for Sigma detection rules. It replays recorded attack telemetry through each rule on every pull request and fails the build if a rule stops firing. [Live report](https://samiali38183.github.io/tripline/).
-- **[sinkline](https://github.com/samiali38183/sinkline)**: a static taint analyzer for Python web apps, measured against Bandit and Semgrep on a public benchmark, with its false positives documented. [Sample report](https://samiali38183.github.io/sinkline/).
-- **[call-kettle](https://github.com/samiali38183/call-kettle)**: an AI phone receptionist backend where booking rules are enforced in code, with a security evaluation of the model's tool access.
-- **[fuzzdiff](https://github.com/samiali38183/fuzzdiff)**: a safe-Rust port of a C HTTP parser, checked against the original with differential fuzzing and planted-bug mutants.
+- **[tripline](https://github.com/samiali38183/tripline)**: a CI gate for Sigma detection rules. It replays recorded attack telemetry through each rule on every pull request and fails the build if a rule stops firing. A SigmaHQ setuid rule matched none of 36 recorded events, two of them the attack; my replacement matches both and 0 of 488 applicable benign events. [Live report](https://samiali38183.github.io/tripline/).
+- **[sinkline](https://github.com/samiali38183/sinkline)**: a static taint analyzer for Python web apps. On a frozen held-out test of 346 labeled bugs it found 88 of 219 taint-class bugs at 0.77 precision (Bandit 34, Semgrep 53) and none of 127 in other classes; recall is 40%. [Sample report](https://samiali38183.github.io/sinkline/).
+- **[kevgate](https://github.com/samiali38183/kevgate)**: a FastAPI service that ranks scanner findings by CISA KEV, EPSS, CVSS and asset criticality. On a Trivy scan of four old public images (1,112 findings), all 10 KEV-listed CVEs rank in the top 10, which is expected since KEV is a score input.
+- **[call-kettle](https://github.com/samiali38183/call-kettle)**: an AI phone receptionist backend where the model only proposes actions and server code authorizes each one. A scripted attacker model runs 42 attacks and 6 normal requests against the real gate; all pass.
 
 All repositories: [github.com/samiali38183?tab=repositories](https://github.com/samiali38183?tab=repositories)
 
